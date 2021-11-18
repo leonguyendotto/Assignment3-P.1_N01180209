@@ -34,7 +34,7 @@ namespace Assignment3_N01180209.Models
         /// Returns a connection to the school database.
         /// </summary>
         /// <example>
-        /// MySqlConnection Conn = Blog.ACcessDatabase ()
+        /// MySqlConnection Conn = School.AccessDatabase ()
         /// </example>
         /// <returns>A MySqlConnection Object</returns>
         public MySqlConnection AccessDatabase ()
