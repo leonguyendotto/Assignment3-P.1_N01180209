@@ -1,6 +1,27 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.85em;
+    background-image: url("image/xmas1.jpg");
+    background-size: cover;
+    background-position:center;
+    height:100%;
+    background-repeat: no-repeat;
+}
+
+a:link, a:visited,
+a:active, a:hover {
+    color: #000000;
+}
+
+a:hover {
+    background-color: #5caa76;
+}
+
+h1, h2 {
+    font-size: 3em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -19,7 +40,10 @@ textarea {
 .navlink {
     text-align:right;
     margin-top: 30px;
-    float: right
+    float: right;
+    padding: 5px;
+    border:solid 2px #808080;
+    border-radius: 20%;
 }
 #containerlist, #containershow {
     width: 80%;

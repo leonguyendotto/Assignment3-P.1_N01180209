@@ -201,6 +201,8 @@
     <Compile Include="Controllers\ClassController.cs" />
     <Compile Include="Controllers\ClassDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentDataController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TeacherDataController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -209,6 +211,7 @@
     </Compile>
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\SchoolDbContext.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -218,6 +221,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\image\xmas1.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -266,6 +270,8 @@
     <Content Include="Views\Teacher\Show.cshtml" />
     <Content Include="Views\Class\List.cshtml" />
     <Content Include="Views\Class\Show.cshtml" />
+    <Content Include="Views\Student\List.cshtml" />
+    <Content Include="Views\Student\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
