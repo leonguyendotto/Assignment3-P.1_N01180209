@@ -18,10 +18,10 @@ namespace Assignment3_N01180209.Controllers
 
 
         //GET: /Teacher/List
-        public ActionResult List()
+        public ActionResult List(string SearchKey=null)
         {
             TeacherDataController controller = new TeacherDataController();
-            IEnumerable<Teacher> Teachers = controller.TeacherList();
+            IEnumerable<Teacher> Teachers = controller.TeacherList(SearchKey);
             return View(Teachers);
         }
 

@@ -14,17 +14,18 @@ namespace Assignment3_N01180209.Controllers
         //This is the API controller that listen to the Database request and provide information from School SQL DB
         //The database context class which allows us to access our MySQL Database
         private SchoolDbContext School = new SchoolDbContext();
-        
+
         //This Controller will access the teachers table of our school database
         /// <summary>
-        /// Returns a list of Teachers in the systeam
+        /// Returns a list of Teachers in the system
         /// </summary>
         /// <example>GET api/TeacherData/TeacherList</example>
         /// <returns>
-        /// A list of teachers (first names and last names)
+        /// A list of teachers information: first name, last name, employee number, hire date, salary
         /// </returns>
         [HttpGet]
-        public IEnumerable<Teacher> TeacherList()
+        [Route("api/TeacherData/TeacherList/{SearchKey?}")]
+        public IEnumerable<Teacher> TeacherList(string SearchKey=null)
         {
             //Create an instance of a connection 
             MySqlConnection Conn = School.AccessDatabase();
@@ -35,9 +36,14 @@ namespace Assignment3_N01180209.Controllers
             //Establish a new command (query) for our database
             MySqlCommand cmd = Conn.CreateCommand();
 
-
             //SQL Query
-            cmd.CommandText = "Select * from Teachers";
+            cmd.CommandText = "Select * from Teachers where lower(teacherfname) like lower(@key) or lower(teacherlname) like lower(@key) " +
+                "or lower(concat(teacherfname, ' ' ,teacherlname)) like lower(@key) or hiredate like (@key) or salary like (@key)";
+
+            //Prevent SQL Injection Attack
+            cmd.Parameters.AddWithValue("@key", "%"+SearchKey+"%");
+            cmd.Prepare();
+
 
             //Gather result set of query into a variable
             MySqlDataReader ResultSet = cmd.ExecuteReader();
@@ -77,6 +83,15 @@ namespace Assignment3_N01180209.Controllers
             return Teachers;
         }
 
+        /// <summary>
+        /// Return a detail Teachers information
+        /// </summary>
+        /// <example>GET api/TeacherData/FindTeacher/{id}</example>
+        /// <param name="id">An interger</param>
+        /// <returns>
+        /// The information of a teacher based on the teacher id 
+        /// </returns>
+
         [HttpGet]
         public Teacher FindTeacher(int id)
         {
@@ -115,6 +130,5 @@ namespace Assignment3_N01180209.Controllers
 
             return NewTeacher;
         }
-
     }
 }
